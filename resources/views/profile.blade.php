@@ -82,6 +82,7 @@
             <div class="row justify-content-center">
                 <div class="col-md-8">
                     <div class="card">
+                        <div class="card-header">Kullanıcı Bilgileri</div>
                         @foreach ($UserInformation as $UserInfo )
                          
                         <form method="POST" action="{{ route('profile.update', ['id' => $UserInfo->id]) }}">
