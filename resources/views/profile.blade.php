@@ -113,7 +113,7 @@
                                 <div class="col-md-6">
 
                                     <input style="display: none" id="password" type="text" class="form-control @error('password') is-invalid @enderror" name="password" value="{{ old('password', $UserInfo->password) }}" required autocomplete="password" autofocus>
-                                   
+                                   <label for="password">********</label>
 
                                     @error('password')
                                         <span class="invalid-feedback" role="alert">
