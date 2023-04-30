@@ -12,7 +12,7 @@
     </div>
 
    
-    <div class="container">
+    <div class="container ">
         <div class="row justify-content-center" id="profile_view" style="display:block;>
             <div class="col-md-8">
                 <div class="card">
@@ -20,7 +20,8 @@
                         
                     
                     <div class="card-header">Kullanıcı Bilgileri</div>
-    
+                    <br>
+                    
                     <div class="card-body">
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('İsim') }}</label>
@@ -67,6 +68,7 @@
                             <div class="col-md-6">
                                 <a href="{{ route('home') }}" class="btn btn-secondary">{{ __('Geri') }}</a>
                             </div>
+                           
                             <div class="col-md-6">
                                 <button class="btn btn-primary" onclick="showForm()">Bilgilerimi Düzenle</button>
                             </div>
@@ -159,15 +161,13 @@
                                    
                                 </div>
                             </div>
+                            <br>
+                            <br>
+                            <br>
                         </form>
     
                             @endforeach
-                            <div class="form-group row mb-0">
-                                <div class="col-md-6">
-                                    <a href="{{ route('home') }}" class="btn btn-secondary">{{ __('Geri') }}</a>
-                                </div>
-                               
-                            </div>
+                            
                         </div>
                     </div>
                 </div>
