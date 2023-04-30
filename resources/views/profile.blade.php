@@ -13,7 +13,7 @@
 
    
     <div class="container ">
-        <div class="row justify-content-center" id="profile_view" style="display:block;>
+        <div class="row justify-content-center" id="profile_view">
             <div class="col-md-8">
                 <div class="card">
                     @foreach ($UserInformation as $UserInfo )
