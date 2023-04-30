@@ -12,9 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('accounts', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('account_id');
             $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('user_id')->on('users');
             $table->decimal('balance', 10, 2);
             $table->string('currency');
             $table->timestamps();
