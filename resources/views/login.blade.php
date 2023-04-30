@@ -9,11 +9,10 @@
 <body>
     <div>
         @include('menu');
-    </div>  
-    
+    </div> 
     
     <div class="container" style="width: 30rem;" >
-        <form method="POST" action="/kisigiris">
+        <form method="POST" action="{{ route('access') }}">
             @csrf
 
             <div class="row mb-3">
@@ -57,6 +56,7 @@
                     @endif
                 </div>
             </div>
+
         </form>
     </div>
 

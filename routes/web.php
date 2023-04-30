@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\dboperations;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,3 +27,4 @@ Route::get('/register', function () {
 })->name('register');
 
 Route::post('/register',[App\Http\Controllers\dboperations::class,'register']);
+Route::post('/login', [App\Http\Controllers\dboperations::class,'accessControl'])->name('access');

@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 use App\Models\User;
-
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 
 class dboperations extends Controller
@@ -10,7 +11,7 @@ class dboperations extends Controller
     public function register(Request $req){
         $user = new User();
 
-        if( $req->input('sifre') == $req->input('sifre') )
+        if( $req->input('sifre') == $req->input('sifret') )
         {
             $user->first_name = $req->input('adi');
             $user->last_name = $req->input('soyadi');
@@ -22,9 +23,31 @@ class dboperations extends Controller
             return view('login');
         }
         else{
-            return back()->with('error', 'Şifreler eşleşmiyor.');
+            return redirect()->back()->withErrors(['error' => 'Şifreler eşleşmiyor']);
         }
         
+    }
+
+    function accessControl(Request $request) {
+        $validatedData = $request->validate([
+            'e_posta' => 'required',
+            'sifre' => 'required',
+        ]);
+
+        $user = DB::table('Users')->where('email', $validatedData['e_posta'])->first();
+
+        if (!$user) {
+            return redirect()->back()->with('error', 'Kullanıcı adı veya şifre yanlış.');
+        }
+
+        if (Hash::check($validatedData['sifre'], $user->password)) {
+            session(['e_posta' => $user->email, 'sifre' => $user->password, 'adi' => $user->first_name, 'soyadi' => $user->last_name]);
+            return view('home');
+        } 
+        else {
+
+            return redirect()->back()->with('error', 'Kullanıcı adı veya şifre yanlış.');
+        }
     }
 
 }
