@@ -12,7 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('exchange_rates', function (Blueprint $table) {
-            $table->string('currency')->primary();
+            $table->bigIncrements('currency_id');
+            $table->string('currency')->unique();
             $table->decimal('rate', 10, 4);
             $table->timestamps();
         });
