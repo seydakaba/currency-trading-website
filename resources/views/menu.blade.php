@@ -62,7 +62,7 @@
                         {{ session('adi') }} {{ session('soyadi') }}</a>
             
                             <div class="dropdown-menu position-absolute top-0 start-100" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="/profil">Profil</a>
+                                <a class="dropdown-item" href="/user/profile">Profil</a>
                                 <a class="dropdown-item" href="/cikisyap">Çıkış Yap</a>
                             </div>
                     @else

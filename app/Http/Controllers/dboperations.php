@@ -35,13 +35,15 @@ class dboperations extends Controller
         ]);
 
         $user = DB::table('Users')->where('email', $validatedData['e_posta'])->first();
-
+        session('UserPass=>sifre');
         if (!$user) {
             return redirect()->back()->with('error', 'Kullanıcı adı veya şifre yanlış.');
         }
 
         if (Hash::check($validatedData['sifre'], $user->password)) {
-            session(['e_posta' => $user->email, 'sifre' => $user->password, 'adi' => $user->first_name, 'soyadi' => $user->last_name]);
+            session(['e_posta' => $user->email, 'sifre' => $user->password, 'adi' => $user->first_name, 'soyadi' => $user->last_name,'id'=>$user->id]);
+           
+
             return view('home');
         } 
         else {
@@ -49,5 +51,12 @@ class dboperations extends Controller
             return redirect()->back()->with('error', 'Kullanıcı adı veya şifre yanlış.');
         }
     }
+
+    public function logOut()
+    {
+        session()->forget('e_posta');
+        return redirect('/login');
+    }
+     
 
 }
