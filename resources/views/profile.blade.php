@@ -24,7 +24,7 @@
                     
                     <div class="card-body">
                         <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('İsim') }}</label>
+                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Ad') }}</label>
     
                             <div class="col-md-6">
                                 <label for="name" class="col-md ">{{ $UserInfo->first_name }}</label>
@@ -32,7 +32,7 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="lastname" class="col-md-4 col-form-label text-md-right">{{ __('Soyadı') }}</label>
+                            <label for="lastname" class="col-md-4 col-form-label text-md-right">{{ __('Soyad') }}</label>
     
                             <div class="col-md-6">
                                 <label for="name" class="col-md">{{ $UserInfo->last_name }}</label>
@@ -40,7 +40,7 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="pass" class="col-md-4 col-form-label text-md-right">{{ __('Şifresi') }}</label>
+                            <label for="pass" class="col-md-4 col-form-label text-md-right">{{ __('Şifre') }}</label>
     
                             <div class="col-md-6">
                                 <label for="name" class="col-md" value="">*************</label>
@@ -84,14 +84,14 @@
             <div class="row justify-content-center">
                 <div class="col-md-8">
                     <div class="card">
-                        <div class="card-header">Kullanıcı Bilgileri</div>
+                        <div class="card-header">Kullanıcı Bilgilerini Değiştir</div>
                         <br><br>
                         @foreach ($UserInformation as $UserInfo )
                          
                         <form method="POST" action="{{ route('profile.update', ['id' => $UserInfo->id]) }}">
                             @csrf
                             <div class="form-group row">
-                                <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('İsim') }}</label>
+                                <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Ad') }}</label>
                                 <div class="col-md-6">
                                     <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name', $UserInfo->first_name) }}" required autocomplete="name" autofocus>
                                     @error('name')
@@ -102,24 +102,10 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="lastname" class="col-md-4 col-form-label text-md-right">{{ __('Soyadı') }}</label>
+                                <label for="lastname" class="col-md-4 col-form-label text-md-right">{{ __('Soyad') }}</label>
                                 <div class="col-md-6">
                                     <input id="lastname" type="text" class="form-control @error('lastname') is-invalid @enderror" name="lastname" value="{{ old('lastname', $UserInfo->last_name) }}" required autocomplete="lastname" autofocus>
                                     @error('lastname')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Şifre') }}</label>
-                                <div class="col-md-6">
-
-                                    <input style="display: none" id="password" type="text" class="form-control @error('password') is-invalid @enderror" name="password" value="{{ old('password', $UserInfo->password) }}" required autocomplete="password" autofocus>
-                                   <label for="password">********</label>
-
-                                    @error('password')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
