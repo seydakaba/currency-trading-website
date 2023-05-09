@@ -24,8 +24,8 @@ class dboperations extends Controller
             $user->save();
             
 
-            $id=DB::table('users')->orderByDesc('id')->first();
-            $account->user_id = $id->id;
+            $id=DB::table('users')->orderByDesc('user_id')->first();
+            $account->user_id = $id->user_id;
             $account->balance = 0;
             $account->currency =0;
             $account->save();
@@ -50,7 +50,7 @@ class dboperations extends Controller
         }
 
         if (Hash::check($validatedData['sifre'], $user->password)) {
-            session(['e_posta' => $user->email, 'sifre' => $user->password, 'adi' => $user->first_name, 'soyadi' => $user->last_name,'id'=>$user->id]);
+            session(['e_posta' => $user->email, 'sifre' => $user->password, 'adi' => $user->first_name, 'soyadi' => $user->last_name,'id'=>$user->user_id]);
            
 
             return view('home');

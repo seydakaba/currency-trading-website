@@ -31,12 +31,12 @@ class CreditCard_Controller extends Controller
      */
     public function store(Request $request)
     {
-        $user = User::find(session('id'));
+        $user = DB::table('users')->where('user_id','=',session('id'))->first();
         $account = DB::table('accounts')->where('user_id','=',session('id'))->first();
 
         $creditCard = new CreditCard;
-        $creditCard->UserID = $user->id;
-        $creditCard->AccountID = $account->id;
+        $creditCard->UserID = $user->user_id;
+        $creditCard->AccountID = $account->account_id;
         $creditCard->CardholderName = $request->CardholderName;
         $creditCard->CardNumber = $request->CardNumber;
         $creditCard->ExpirationDate = $request->ExpirationDate;
