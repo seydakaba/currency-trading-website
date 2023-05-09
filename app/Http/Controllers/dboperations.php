@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\User;
+use App\Models\Account;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
@@ -10,6 +11,7 @@ class dboperations extends Controller
 {
     public function register(Request $req){
         $user = new User();
+        $account = new Account();
 
         if( $req->input('sifre') == $req->input('sifret') )
         {
@@ -20,6 +22,13 @@ class dboperations extends Controller
             $user->phone_number = $req->input('telefon'); 
 
             $user->save();
+            
+
+            $id=DB::table('users')->orderByDesc('id')->first();
+            $account->user_id = $id->id;
+            $account->balance = 0;
+            $account->currency =0;
+            $account->save();
             return view('login');
         }
         else{

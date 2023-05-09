@@ -8,7 +8,19 @@
 
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
+<link rel="icon" href="img/mdb-favicon.ico" type="image/x-icon" />
+<!-- Font Awesome -->
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+/>
+<!-- Google Fonts Roboto -->
+<link
+  rel="stylesheet"
+  href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap"
+/>
+<!-- MDB -->
+<link rel="stylesheet" href="css/mdb.min.css" />
 
     <div class="d-flex">
         <nav class="navbar navbar-expand-lg navbar-light bg-dark" style="width: 100%;" >
@@ -63,6 +75,7 @@
             
                             <div class="dropdown-menu position-absolute top-0 start-100" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="/user/profile">Profil</a>
+                                <a class="dropdown-item" href="/creditCard">Kredi Kartlarım</a>
                                 <a class="dropdown-item" href="/cikisyap">Çıkış Yap</a>
                             </div>
                     @else

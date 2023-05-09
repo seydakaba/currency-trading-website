@@ -30,11 +30,17 @@ Route::get('/user/profile', function () {
     return view('profile');
 })->name('profile');
 
+Route::get('/creditCard', function () {
+    return view('creditCard');
+})->name('creditCard');
+
 
 Route::post('/register',[App\Http\Controllers\dboperations::class,'register']);
 Route::post('/login', [App\Http\Controllers\dboperations::class,'accessControl'])->name('access');
 Route::get('/cikisyap',[App\Http\Controllers\dboperations::class,'logOut'])->name('logOut');
 Route::get('/user/profile', [App\Http\Controllers\UserController::class, 'UserInfo'])->name('UserInfo');
 Route::post('/profile/update/{id}', [App\Http\Controllers\UserController::class,'update'])->name('profile.update');
+
+Route::post('/creditCard',[App\Http\Controllers\CreditCard_Controller::class,'store'])->name('addCard');
 
 
