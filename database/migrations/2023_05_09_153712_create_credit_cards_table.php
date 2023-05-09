@@ -13,8 +13,10 @@ return new class extends Migration
     {
         Schema::create('credit_cards', function (Blueprint $table) {
             $table->id('CardID');
-            $table->foreignId('UserID')->constrained('users');
-            $table->foreignId('AccountID')->constrained('accounts');
+            $table->unsignedBigInteger('UserID');
+            $table->unsignedBigInteger('AccountID');
+            $table->foreign('UserID')->references('user_id')->on('users');
+            $table->foreign('AccountID')->references('account_id')->on('accounts');
             $table->string('CardholderName', 50);
             $table->string('CardNumber', 16);
             $table->string('ExpirationDate', 5);
