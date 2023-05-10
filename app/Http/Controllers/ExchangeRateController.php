@@ -55,30 +55,31 @@ class ExchangeRateController extends Controller
         return view('exchange-rates', compact('exchangeRates'));
     }
     public function convertCurrency(Request $request)
-        {
-        // Get the user input
-        $amount = $request->input('amount');
-        $fromCurrency = $request->input('from_currency');
-        $toCurrency = $request->input('to_currency');
+{
+    // Get the user input
+    $amount = $request->input('amount');
+    $fromCurrency = $request->input('to_currency');
+    $toCurrency = $request->input('from_currency');
 
-        // Get the exchange rates
-        $exchangeRates = ExchangeRate::all();
+    // Get the exchange rates
+    $exchangeRates = ExchangeRate::all();
+    
 
-        // Find the exchange rate for the from currency
-        $fromExchangeRate = $exchangeRates->where('currency', $fromCurrency)->first();
+    // Find the exchange rate for the from currency
+    $fromExchangeRate = $exchangeRates->where('currency', $fromCurrency)->pluck('rate')->first();
 
-        // Find the exchange rate for the to currency
-        $toExchangeRate = $exchangeRates->where('currency', $toCurrency)->first();
-        dd($fromExchangeRate->rate);
- 
-        // Calculate the converted amount
-        $convertedAmount = $amount * ($toExchangeRate->rate / $fromExchangeRate->rate);
+    // Find the exchange rate for the to currency
+    $toExchangeRate = $exchangeRates->where('currency', $toCurrency)->pluck('rate')->first();
 
-        // Format the result
-        $result = number_format($convertedAmount, 2);
+    // Calculate the converted amount
+    $convertedAmount = $amount * ($toExchangeRate / $fromExchangeRate);
 
-        // Return the result to the view
-        return view('currency-converter', compact('result'));
-        }
+    // Format the result
+    $result = number_format($convertedAmount, 2);
+
+    // Return the result to the view
+    return view('home', compact('result','exchangeRates'));
+}
+
 }
 
