@@ -39,10 +39,6 @@
                     </li>
 
                     <li class="nav-item-auto">
-                        <a class="nav-link " aria-current="page" href="exchange-rates">Market</a>
-                    </li>
-
-                    <li class="nav-item-auto">
                         <a class="nav-link " aria-current="page" href="#">Al/Sat</a>
                     </li>
 
