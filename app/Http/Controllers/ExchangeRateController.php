@@ -40,13 +40,13 @@ class ExchangeRateController extends Controller
             $exchangeRate = ExchangeRate::where('currency', $currency)->first();
             if ($exchangeRate) {
                 // If the exchange rate already exists, update the existing record
-                $exchangeRate->rate = $rate;
+                $exchangeRate->rate = 1 / $rate; 
                 $exchangeRate->save();
             } else {
                 // If the exchange rate does not exist, create a new record
                 $exchangeRate = new ExchangeRate();
                 $exchangeRate->currency = $currency;
-                $exchangeRate->rate = $rate;
+                $exchangeRate->rate = 1 / $rate; 
                 $exchangeRate->save();
             }
         }
