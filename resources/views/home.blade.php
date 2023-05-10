@@ -19,8 +19,12 @@
         <div class="mb-3">
           <label for="from_currency" class="form-label">From Currency:</label>
           <select name="from_currency" id="from_currency" class="form-select" required>
-            @foreach ($exchangeRates as $exc )
-              <option value="{{ $exc->currency }}">{{ $exc->currency }}</option>
+            <?php 
+              use Illuminate\Support\Facades\DB;
+              $exchangeRates = DB::table('exchange_rates')->get();
+              ?>
+            @foreach ($exchangeRates as $exc )           
+              <option  value="{{ $exc->currency }}">{{ $exc->currency }}</option>
             @endforeach
            </select>
         </div>
