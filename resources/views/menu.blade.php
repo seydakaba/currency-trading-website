@@ -6,7 +6,6 @@
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
 
-<link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <link rel="icon" href="img/mdb-favicon.ico" type="image/x-icon" />
 <!-- Font Awesome -->
@@ -19,11 +18,12 @@
   rel="stylesheet"
   href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap"
 />
+
 <!-- MDB -->
 <link rel="stylesheet" href="css/mdb.min.css" />
 
     <div class="d-flex">
-        <nav class="navbar navbar-expand-lg navbar-light bg-dark" style="width: 100%;" >
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="width: 100%;" >
             <a class="navbar-brand" href="/">KOU <br> OTOMASYON</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -47,7 +47,7 @@
                     </li>
 
                     <li class="nav-item-auto">
-                        <a class="nav-link " aria-current="page" href="#">Haberler</a>
+                        <a class="nav-link " aria-current="page" href="stock-news">Haberler</a>
                     </li>
                     
                     </ul>

@@ -11,7 +11,7 @@ class NewsController extends Controller
     {
         $client = new \GuzzleHttp\Client();
 
-        $response = $client->request('GET', 'https://mboum-finance.p.rapidapi.com/ne/news', [
+        $response = $client->request('GET', 'https://mboum-finance.p.rapidapi.com/ne/news',  [
             'headers' => [
                 'X-RapidAPI-Host' => 'mboum-finance.p.rapidapi.com',
                 'X-RapidAPI-Key' => '84eed48f13mshb2f2672ec477740p13a944jsncfa8f8307ba4',
@@ -21,5 +21,6 @@ class NewsController extends Controller
         #echo $response->getBody();
         $news = json_decode($response->getBody());
         return view('news', compact('news'));
+
     }
 }

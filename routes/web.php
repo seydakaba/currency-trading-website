@@ -37,6 +37,8 @@ Route::get('/creditCard', function () {
 })->name('creditCard');
 
 
+
+
 Route::post('/register',[App\Http\Controllers\dboperations::class,'register']);
 Route::post('/login', [App\Http\Controllers\dboperations::class,'accessControl'])->name('access');
 Route::get('/cikisyap',[App\Http\Controllers\dboperations::class,'logOut'])->name('logOut');
