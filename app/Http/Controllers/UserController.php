@@ -12,7 +12,7 @@ class UserController extends Controller
 {
     function UserInfo(){
         session_start();
-        $UserInfo=DB::table('users')->where('id','=',session('id'))->get(); 
+        $UserInfo=DB::table('users')->where('user_id','=',session('id'))->get(); 
        
         
         return view('profile',['UserInformation'=> $UserInfo]);

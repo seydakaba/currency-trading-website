@@ -88,7 +88,7 @@
                         <br><br>
                         @foreach ($UserInformation as $UserInfo )
                          
-                        <form method="POST" action="{{ route('profile.update', ['id' => $UserInfo->id]) }}">
+                        <form method="POST" action="{{ route('profile.update', ['id' => $UserInfo->user_id]) }}">
                             @csrf
                             <div class="form-group row">
                                 <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Ad') }}</label>
