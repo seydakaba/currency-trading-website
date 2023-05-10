@@ -76,6 +76,7 @@
                             <div class="dropdown-menu position-absolute top-0 start-100" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="/user/profile">Profil</a>
                                 <a class="dropdown-item" href="/creditCard">Kredi Kartlarım</a>
+                                <a class="dropdown-item" href="/wallet">Cüzdan</a>
                                 <a class="dropdown-item" href="/cikisyap">Çıkış Yap</a>
                             </div>
                     @else
