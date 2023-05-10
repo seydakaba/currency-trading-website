@@ -36,7 +36,9 @@ Route::get('/creditCard', function () {
     return view('creditCard');
 })->name('creditCard');
 
-
+Route::get('/wallet', function () {
+    return view('wallet');
+})->name('wallet');
 
 
 Route::post('/register',[App\Http\Controllers\dboperations::class,'register']);
@@ -53,7 +55,7 @@ Route::get('/stock-news', 'App\Http\Controllers\NewsController@getStockNews');
 
 Route::post('/', [App\Http\Controllers\ExchangeRateController::class, 'convertCurrency'])->name('convertCurrency');
 
-
+Route::get('/wallet', 'App\Http\Controllers\wallet@WalletInformation');
 
 
 
