@@ -7,14 +7,26 @@
     <title>Haberler</title>
 </head>
 <body>
-    <ul>
+    <div>
+        @include('menu')
+    </div>
+    <div class="container ">
+    <ul style="list-style: none;">
         <?php foreach($data['item'] as $item): ?>
-            <li>
-                <h3><a href="<?= $item['link'] ?>"><?= $item['title'] ?></a></h3>
-                <p><?= $item['description'] ?></p>
-                <span><?= $item['pubDate'] ?></span>
-            </li>
+            <div class="news-item m-3">
+                <div class="card">
+                    <div class="card-body">
+                        <li>
+                        <h3><a href="<?= $item['link'] ?>"><?= $item['title'] ?></a></h3>
+                        <p><?= $item['description'] ?></p>
+                        <span><?= $item['pubDate'] ?></span>
+                        </li>
+                    </div>
+                </div>
+            </div>
         <?php endforeach; ?>
     </ul>
+    </div>
+
 </body>
 </html>
