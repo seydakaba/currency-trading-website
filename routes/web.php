@@ -52,6 +52,7 @@ Route::post('/creditCard',[App\Http\Controllers\CreditCard_Controller::class,'st
 Route::get('/exchange-rates', [ExchangeRateController::class, 'getExchangeRates']);
 
 Route::get('/stock-news', 'App\Http\Controllers\NewsController@getStockNews');
+Route::get('/deneme', 'App\Http\Controllers\NewsController@getStockNews');
 
 Route::post('/', [App\Http\Controllers\ExchangeRateController::class, 'convertCurrency'])->name('convertCurrency');
 
