@@ -41,6 +41,7 @@ Route::get('/wallet', function () {
 })->name('wallet');
 
 
+
 Route::post('/register',[App\Http\Controllers\dboperations::class,'register']);
 Route::post('/login', [App\Http\Controllers\dboperations::class,'accessControl'])->name('access');
 Route::get('/cikisyap',[App\Http\Controllers\dboperations::class,'logOut'])->name('logOut');
@@ -50,9 +51,10 @@ Route::post('/profile/update/{id}', [App\Http\Controllers\UserController::class,
 Route::post('/creditCard',[App\Http\Controllers\CreditCard_Controller::class,'store'])->name('addCard');
 
 Route::get('/exchange-rates', [ExchangeRateController::class, 'getExchangeRates']);
-
 Route::get('/stock-news', 'App\Http\Controllers\NewsController@getStockNews');
 Route::get('/deneme', 'App\Http\Controllers\NewsController@getStockNews');
+Route::post('/currency-purchase', [ExchangeRatesController::class, 'buyCurrency'])->name('exchange.buy');
+
 
 Route::post('/', [App\Http\Controllers\ExchangeRateController::class, 'convertCurrency'])->name('convertCurrency');
 
