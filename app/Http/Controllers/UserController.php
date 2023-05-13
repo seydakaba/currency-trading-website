@@ -11,7 +11,7 @@ use App\Models\User;
 class UserController extends Controller
 {
     function UserInfo(){
-        session_start();
+        
         $UserInfo=DB::table('users')->where('user_id','=',session('id'))->get(); 
        
         
@@ -25,18 +25,17 @@ class UserController extends Controller
         public function update(Request $request, $id)
     {
         
-        $user = User::find($id);
-        $user->first_name = $request->input('name');
-        $user->last_name = $request->input('lastname');
-        $user->email = $request->input('email');
-        $user->phone_number = $request->input('phone_number');
-       
-        
-        $user->save();
-        
-
-
-        return redirect('/cikisyap')->with('success', 'Profil bilgileriniz başarıyla güncellendi.');
+        DB::table('users')
+        ->where('user_id', $id)
+        ->update([
+            'first_name' => $request->input('name'),
+            'last_name' => $request->input('lastname'),
+            'email' => $request->input('email'),
+            'phone_number' => $request->input('phone_number'),
+        ]);
+        session(['e_posta' =>$request->input('email'), 'adi' => $request->input('name'), 'soyadi' => $request->input('lastname'),'id'=>$id]);
+    
+        return redirect('/user/profile')->with('success', 'Profil bilgileriniz başarıyla güncellendi.');
     }
 
 }
