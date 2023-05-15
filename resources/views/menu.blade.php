@@ -78,7 +78,7 @@
                     @else
                         <a class="nav-link dropdown-toggle position-relative" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fas fa-user"></i> </a>
-                        <div class="dropdown-menu position-absolute top-0 start-100" aria-labelledby="navbarDropdown">
+                        <div class="dropdown-menu position-absolute top-0 start-100 bg-dark" aria-labelledby="navbarDropdown">
                             @if (Route::has('login'))
                                 <a class="nav-link" href="/login">Giriş Yap</a>
                             @endif
