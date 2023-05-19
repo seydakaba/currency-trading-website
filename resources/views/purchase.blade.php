@@ -7,7 +7,7 @@
 	<h1>Döviz Satın Alma Formu</h1>
 	<form method="POST" action="{{ route('buyCurrency') }}">
 		@csrf
-        @method('PUT')
+        @method('POST') 
 		<label for="account_id">Hesap Seçin:</label>
 		<select name="account_id" id="account_id">
 			@foreach($accounts as $account)

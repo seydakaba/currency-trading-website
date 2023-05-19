@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use GuzzleHttp\Client;
 use App\Models\ExchangeRate;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 
 class ExchangeRateController extends Controller
@@ -52,7 +53,7 @@ class ExchangeRateController extends Controller
         }
         
         $exchangeRates = ExchangeRate::all();
-        return view('exchange-rates', compact('exchangeRates'));
+        return view('home', compact('exchangeRates'));
     }
 
     
@@ -87,6 +88,8 @@ class ExchangeRateController extends Controller
 
     public function buyCurrency(Request $request)
     {
+
+
         // Get user input
         $amount = $request->input('amount');
         $currency = $request->input('currency');
