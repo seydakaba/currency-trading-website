@@ -17,9 +17,6 @@ class UserController extends Controller
         
         return view('profile',['UserInformation'=> $UserInfo]);
 
-      
-
-
     }
 
         public function update(Request $request, $id)

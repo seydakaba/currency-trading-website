@@ -66,7 +66,7 @@
                         @endforeach
                         <div class="form-group row mb-0">
                             <div class="col-md-6">
-                                <a href="{{ route('home') }}" class="btn btn-secondary">{{ __('Geri') }}</a>
+                                <a href="/" class="btn btn-secondary">{{ __('Geri') }}</a>
                             </div>
                            
                             <div class="col-md-6">
