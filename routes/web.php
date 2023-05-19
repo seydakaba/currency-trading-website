@@ -2,7 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ExchangeRateController;
+use App\Http\Controllers\CurrencyPurchaseController;
 use App\Http\Controllers\dboperations;
+use App\Models\Account;
+use App\Models\ExchangeRate;
 
 
 /*
@@ -59,12 +62,9 @@ Route::get('/stock-news', 'App\Http\Controllers\NewsController@getStockNews');
 Route::get('/deneme', 'App\Http\Controllers\NewsController@getStockNews');
 #Route::post('/currency-purchase', [App\Http\Controllers\ExchangeRatesController::class, 'buyCurrency'])->name('exchange.buy');
 #Route::get('/currency-purchase', 'App\Http\Controllers\ExchangeRateController@buyCurrency');
-Route::post('/currency-purchase', function () {
-    $accounts = App\Models\Account::all();
-    $exchangeRates = App\Models\ExchangeRate::all();
 
-    return view('purchase', compact('accounts', 'exchangeRates'));
-})->name('currency-purchase');
+Route::get('/currency-purchase', [CurrencyPurchaseController::class, 'showCurrencyPurchaseForm'])->name('currency-purchase-form');
+Route::post('/currency-purchase', [CurrencyPurchaseController::class, 'buyCurrency'])->name('currency-purchase');
 
 
 Route::post('/', [App\Http\Controllers\ExchangeRateController::class, 'convertCurrency'])->name('convertCurrency');
