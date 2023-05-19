@@ -54,7 +54,13 @@ Route::get('/', [ExchangeRateController::class, 'getExchangeRates']);
 Route::get('/stock-news', 'App\Http\Controllers\NewsController@getStockNews');
 Route::get('/deneme', 'App\Http\Controllers\NewsController@getStockNews');
 #Route::post('/currency-purchase', [App\Http\Controllers\ExchangeRatesController::class, 'buyCurrency'])->name('exchange.buy');
-Route::get('/currency-purchase', 'App\Http\Controllers\ExchangeRateController@buyCurrency');
+#Route::get('/currency-purchase', 'App\Http\Controllers\ExchangeRateController@buyCurrency');
+Route::post('/currency-purchase', function () {
+    $accounts = App\Models\Account::all();
+    $exchangeRates = App\Models\ExchangeRate::all();
+
+    return view('purchase', compact('accounts', 'exchangeRates'));
+})->name('currency-purchase');
 
 
 Route::post('/', [App\Http\Controllers\ExchangeRateController::class, 'convertCurrency'])->name('convertCurrency');
