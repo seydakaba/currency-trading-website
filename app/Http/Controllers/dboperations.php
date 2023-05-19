@@ -27,7 +27,7 @@ class dboperations extends Controller
             $id=DB::table('users')->orderByDesc('user_id')->first();
             $account->user_id = $id->user_id;
             $account->balance = 0;
-            $account->currency =0;
+            $account->currency = 'TRY';
             $account->save();
             return view('login');
         }

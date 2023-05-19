@@ -40,6 +40,10 @@ Route::get('/wallet', function () {
     return view('wallet');
 })->name('wallet');
 
+Route::get('/uploadbalance', function () {
+    return view('uploadbalance');
+})->name('uploadbalance');
+
 
 
 Route::post('/register',[App\Http\Controllers\dboperations::class,'register']);
@@ -58,7 +62,9 @@ Route::post('/currency-purchase', [ExchangeRatesController::class, 'buyCurrency'
 
 Route::post('/', [App\Http\Controllers\ExchangeRateController::class, 'convertCurrency'])->name('convertCurrency');
 
-Route::get('/wallet', 'App\Http\Controllers\wallet@WalletInformation');
+Route::get('/wallet', 'App\Http\Controllers\wallet@WalletInformation')->name('balance');
 
+Route::get('/uploadbalance', 'App\Http\Controllers\addBalance@creditCards')->name('creditCards');
+Route::post('/uploadbalance', 'App\Http\Controllers\addBalance@uploadBalance')->name('uploadBalance');
 
 
