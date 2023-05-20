@@ -16,22 +16,26 @@ class CurrencyPurchaseController extends Controller
         $userId = session('user_id'); // Kullanıcının session kimliğini al
     
         // Get exchange rate for selected currency
-        $exchangeRate = ExchangeRate::where('currency', $currency)->firstOrFail();
+        $exchangeRate = ExchangeRate::where('currency', $currency)->first();
     
         // Calculate amount in user's base currency
         $convertedAmount = $amount / $exchangeRate->rate;
     
         // Get user's account in the base currency
-        $account = Account::where('user_id', $userId)->where('currency', 'TRY')->firstOrFail();
+        $account = Account::where('user_id', $userId)->where('currency', 'TRY')->first();
     
         // Check if user has sufficient balance in the account
-        if ($account->balance < $convertedAmount) {
+        if ($account && $account->balance < $convertedAmount) {
             return back()->with('error', 'Insufficient balance.');
         }
     
-        // Deduct the amount from the user's account
+    // Deduct the amount from the user's account
+    if ($account) {
         $account->balance -= $convertedAmount;
         $account->save();
+    } else {
+        return back()->with('error', 'User account not found.');
+    }
     
         // Add the transaction to the account's transaction history
         $transaction = new Transaction([
@@ -61,7 +65,7 @@ class CurrencyPurchaseController extends Controller
         $account->balance += $amount;
         $account->save();
     
-        return redirect()->route('currency-purchase')->with('success', 'Currency bought successfully.');
+        return redirect()->route('currency-purchase-form')->with('success', 'Currency bought successfully.');
     }
     public static function showCurrencyPurchaseForm()
     {

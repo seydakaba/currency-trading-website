@@ -8,7 +8,7 @@
         @include('menu')
     </div>
     <h1>Döviz Satın Alma Formu</h1>
-    <form method="POST" action="{{ route('currency-purchase') }}">
+    <form method="POST" action="{{ route('currency-purchase') }}" id="currency-purchase-form">
         @csrf
         <label for="account_id">Hesap Seçin:</label>
         <select name="account_id" id="account_id">
