@@ -10,26 +10,36 @@
     <div>
         @include('menu') 
     </div>
-    <div class="container">
-        <form action="{{ route('uploadBalance') }}" method="post">
-            @csrf
-            <div class="form-group">
-                <label for="kart_id">Kart Seçin:</label>
-                <select name="kart_id" id="kart_id" class="form-control">
-                    @foreach($cards as $card)
-                        <option value="{{ $card->CardID }}">{{ $card->CardNumber }}</option>
-                    @endforeach
-                </select>
+    <div class="container mt-4">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Bakiye Yükle</h5>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <form action="{{ route('uploadBalance') }}" method="post">
+                            @csrf
+                            <div class="form-group">
+                                <label for="kart_id">Kart Seçin:</label>
+                                <select name="kart_id" id="kart_id" class="form-control">
+                                    @foreach($cards as $card)
+                                        <option value="{{ $card->CardID }}">{{ $card->CardNumber }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="yukleme_miktari">Yükleme Miktarı:</label>
+                                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                <input type="number" name="yukleme_miktari" id="yukleme_miktari" class="form-control" min='1'>
+                            </div>
+                            
+                                <button type="submit" class="btn btn-primary">Bakiye Yükle</button>
+                        </form>
+                    </div>
+                </div>
             </div>
-            
-            <div class="form-group">
-                <label for="yukleme_miktari">Yükleme Miktarı:</label>
-                <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                <input type="number" name="yukleme_miktari" id="yukleme_miktari" class="form-control" min='1'>
-            </div>
-            
-                <button type="submit" class="btn btn-primary">Bakiye Yükle</button>
-        </form>
+        </div>
+        
     </div>
 </body>
 </html>
