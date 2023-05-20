@@ -13,7 +13,7 @@
         <label for="account_id">Hesap Seçin:</label>
         <select name="account_id" id="account_id">
             @foreach($accounts as $account)
-                <option value="{{ $account->id }}">{{ $account->currency }} Hesabı (Bakiye: {{ $account->balance }})</option>
+                <option value="{{ $account->account_id }}">{{ $account->currency }} Hesabı (Bakiye: {{ $account->balance }})</option>
             @endforeach
         </select>
         <br><br>
@@ -28,7 +28,23 @@
         <input type="number" step="0.01" name="amount" id="amount">
         <br><br>
         <button type="submit">Satın Al</button>
+    
     </form>
+    @if (session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+@endif
+@if (session('error1'))
+    <div class="alert alert-danger">
+        {{ session('error1') }}
+    </div>
+@endif
+@if (session('error2'))
+    <div class="alert alert-danger">
+        {{ session('error2') }}
+    </div>
+@endif
 </body>
 </html>
 

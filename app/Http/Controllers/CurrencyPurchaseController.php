@@ -15,30 +15,36 @@ class CurrencyPurchaseController extends Controller
         // Get user input
         $amount = $request->input('amount');
         $currency = $request->input('currency');
+        $fromCurrency =$request->input('account_id');;
         $userId = session('id'); // Kullanıcının session kimliğini al
-       
+
        
         // Get exchange rate for selected currency
         $exchangeRate = ExchangeRate::where('currency', $currency)->first();
-    
+        
+        $accountCurrency = DB::table('accounts')->where('account_id', $fromCurrency)->pluck('currency')->first();
+        $fromExchangeRate = ExchangeRate::where('currency', $accountCurrency)->pluck('rate')->first();
+       
+
         // Calculate amount in user's base currency
-        $convertedAmount = $amount * $exchangeRate->rate;
+        $convertedAmount = $amount * ($exchangeRate->rate /$fromExchangeRate);
     
         // Get user's account in the base currency
-        $account = DB::table('accounts')->where('user_id', $userId)->where('currency', 'TRY')->first();
+        $account = DB::table('accounts')->where('user_id', $userId)->where('currency', $accountCurrency)->first();
+       
         $neWbalance=$account->balance - $convertedAmount;
         // Check if user has sufficient balance in the account
         if ($account && $account->balance < $convertedAmount) {
-            return back()->with('error', 'Insufficient balance.');
+            return back()->with('error1', 'Insufficient balance.');
         }
    
     // Deduct the amount from the user's account
     if ($account) {
-        DB::table('accounts')->where('user_id', $userId)->where('currency', 'TRY')
+        DB::table('accounts')->where('user_id', $userId)->where('currency', $accountCurrency)
         ->update(['balance' =>$neWbalance]);
         
     } else {
-        return back()->with('error', 'User account not found.');
+        return back()->with('error2', 'User account not found.');
     }
     
         // Add the transaction to the account's transaction history
