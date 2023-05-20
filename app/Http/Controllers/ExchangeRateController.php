@@ -52,7 +52,7 @@ class ExchangeRateController extends Controller
                 $exchangeRate->save();
             }
         }
-        
+       
         $exchangeRates = ExchangeRate::all();
         return view('home', compact('exchangeRates'));
     }

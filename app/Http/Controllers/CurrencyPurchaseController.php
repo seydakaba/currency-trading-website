@@ -82,7 +82,7 @@ class CurrencyPurchaseController extends Controller
     }
     public static function showCurrencyPurchaseForm()
     {
-        $accounts = Account::all();
+        $accounts = DB::table('accounts')->where('user_id',session('id'))->get();
         $exchangeRates = ExchangeRate::all();
         
         return view('purchase', compact('accounts', 'exchangeRates'));
