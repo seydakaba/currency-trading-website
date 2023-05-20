@@ -36,6 +36,9 @@ class ExchangeRateController extends Controller
     
         // Parse the JSON response
         $data = json_decode($response, true);
+
+         // Add TRY currency with a value of 1 to the data
+        $data['rates']['TRY'] = 1;
     
         // Loop through each currency and save its exchange rate
         foreach ($data['rates'] as $currency => $rate) {
