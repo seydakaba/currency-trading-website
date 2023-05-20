@@ -39,7 +39,7 @@
                     </li>
 
                     <li class="nav-item-auto">
-                        <a class="nav-link " aria-current="page" href="#">Al/Sat</a>
+                        <a class="nav-link " aria-current="page" href="currency-purchase">Al/Sat</a>
                     </li>
 
                     <li class="nav-item-auto">

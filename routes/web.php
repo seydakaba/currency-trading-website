@@ -47,6 +47,9 @@ Route::get('/uploadbalance', function () {
     return view('uploadbalance');
 })->name('uploadbalance');
 
+Route::get('/currency-purchase', function () {
+    return view('purchase');
+});
 
 
 Route::post('/register',[App\Http\Controllers\dboperations::class,'register']);
