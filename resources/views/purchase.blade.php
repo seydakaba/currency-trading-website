@@ -43,9 +43,7 @@
                 </tr>
             </table>
         </form>
-       
-    </div>    
- @if (session('success'))
+        @if (session('success'))
         <div class="alert alert-success">
             {{ session('success') }}
         </div>
@@ -60,6 +58,8 @@
             {{ session('error2') }}
         </div>
     @endif
+    </div>    
+ 
 </body>
 </html>
 
